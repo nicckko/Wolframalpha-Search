@@ -10,7 +10,7 @@
             event.preventDefault();
 
             const query = document.getElementById("query").value;
-            const url = `https://api.wolframalpha.com/v1/result?appid=YOUR_API_KEY=${query}`;
+            const url = `https://api.wolframalpha.com/v1/result?appid=YOUR_API_KEY&i=${query}`;
             //console.log("Query:", query);
 
             fetch(url)
