@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+    </style>
+    <title>home</title>
+    <script>
+        function searchWolfram(event) {
+            event.preventDefault(); // prevent the form from submitting
+
+            // get the search query from the input field
+            const query = document.getElementById("query").value;
+
+            // query the Wolfram Alpha API for the search query
+            const url = `https://api.wolframalpha.com/v1/result?appid=24P8V6-WPA8W9JT68&i=${query}`;
+
+            console.log("Query:", query);
+
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    console.log("Response:", data);
+
+                    // update the result paragraph with the answer
+                    const resultParagraph = document.getElementById("results");
+                    resultParagraph.innerHTML = data;
+                })
+                .catch(error => console.error(error));
+        }
+    </script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body style="background-color: #505050; color: #FFFFFF">
+<nav style="background-color: #383838;">
+    <div>
+        <h1 style="font-family:Inconsolata, monospace; color: #FFFFFF;">search your question</h1>
+        <button class="button"><a href="index.html"><span>home</span></a></button>
+    </div>
+</nav>
+<form onsubmit="searchWolfram(event)">
+        <input type="text" id="query" name="q" style="font-family:Inconsolata, monospace; color: #FFFFFF;">
+        <button class="smallButton" type="submit">Search</button>
+    </div>
+</form>
+<div id="result">
+    <p id="results">results will be displayed here</p>
+</div>
+</body>
+</html>
