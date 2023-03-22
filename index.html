@@ -7,22 +7,16 @@
     <title>home</title>
     <script>
         function searchWolfram(event) {
-            event.preventDefault(); // prevent the form from submitting
+            event.preventDefault();
 
-            // get the search query from the input field
             const query = document.getElementById("query").value;
-
-            // query the Wolfram Alpha API for the search query
-            const url = `https://api.wolframalpha.com/v1/result?appid=24P8V6-WPA8W9JT68&i=${query}`;
-
-            console.log("Query:", query);
+            const url = `https://api.wolframalpha.com/v1/result?appid=YOUR_API_KEY=${query}`;
+            //console.log("Query:", query);
 
             fetch(url)
                 .then(response => response.text())
                 .then(data => {
-                    console.log("Response:", data);
-
-                    // update the result paragraph with the answer
+                    //console.log("Response:", data);
                     const resultParagraph = document.getElementById("results");
                     resultParagraph.innerHTML = data;
                 })
@@ -44,7 +38,7 @@
     </div>
 </form>
 <div id="result">
-    <p id="results">results will be displayed here</p>
+    <p id="results">results will go here</p>
 </div>
 </body>
 </html>
